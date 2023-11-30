@@ -1,24 +1,49 @@
 package Budget;
 
 import java.util.Date;
-import java.util.Calendar;
+import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
-    // Creating a Date object using Calendar
-    Calendar calendar = Calendar.getInstance();
-    calendar.set(2023, Calendar.NOVEMBER, 15); // Set the desired date
-    Date expenseDate = calendar.getTime();
+    Scanner scanner = new Scanner(System.in);
 
-    // Creating users
-    User user1 = new User("user1", "pass123");
+    System.out.print("Enter username: ");
+    String username = scanner.nextLine();
 
-    // Using a Date object in inputExpense method
-    user1.inputExpense(50.0, expenseDate, "Groceries");
+    System.out.print("Enter password: ");
+    String password = scanner.nextLine();
 
-    // Retrieving expense details
-    System.out.println("User1 Amount: " + user1.getAmount());
-    System.out.println("User1 Description: " + user1.getDescription());
-    System.out.println("User1 Date: " + user1.getDate());
+    // Create a student user
+    Student student = new Student(username, password);
+
+    System.out.print("Enter password again to authenticate: ");
+    String enteredPassword = scanner.nextLine();
+
+    boolean isLoginSuccessful = student.authenticate(enteredPassword);
+
+    if (isLoginSuccessful) {
+      System.out.println("Login successful for user: " + student.getUsername());
+
+      // Input expenses for user
+      System.out.print("Enter expense amount: ");
+      double amount = scanner.nextDouble();
+      scanner.nextLine();
+
+      System.out.print("Enter expense description: ");
+      String description = scanner.nextLine();
+
+      Date currentDate = new Date(); // Current date
+      student.inputExpense(amount, currentDate, description);
+
+      // Retrieve and display expense details
+      System.out.println("\nExpense Details:");
+      System.out.println("Amount: " + student.getAmount());
+      System.out.println("Date: " + student.getDate());
+      System.out.println("Description: " + student.getDescription());
+    } else {
+      System.out.println("Invalid credentials");
+    }
+
+    scanner.close();
   }
 }

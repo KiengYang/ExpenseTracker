@@ -3,31 +3,29 @@ package Budget;
 import java.util.Date;
 
 public class User {
-  private String username;
-  private String password;
-  private double amount;
-  private Date date;
-  private String description;
+  protected String username;
+  protected String password;
+  protected boolean isAuthenticated;
 
   public User(String username, String password) {
     this.username = username;
     this.password = password;
+    this.isAuthenticated = false;
   }
 
-  public boolean authenticate() {
-    // Your authentication logic here
-    return true; // Placeholder for authentication success
+  public boolean authenticate(String enteredPassword) {
+    if (enteredPassword.equals(password)) {
+      isAuthenticated = true;
+      return true;
+    }
+    return false;
   }
 
-  public void inputExpense(double amount, Date date, String description) {
-    this.amount = amount;
-    this.date = date;
-    this.description = description;
-  }
+  public boolean isAuthenticated() { return isAuthenticated; }
 
-  public double getAmount() { return amount; }
+  public void inputExpense(double amount, Date date, String description) {}
 
-  public Date getDate() { return date; }
+  public String getUsername() { return username; }
 
-  public String getDescription() { return description; }
+  public String getPassword() { return password; }
 }
