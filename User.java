@@ -1,7 +1,7 @@
+
 package ExpenseTracker.User;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,7 +10,7 @@ public class User {
   private String password;
   private List<Expense> expenses;
 
-  public User(String username, String password ) {
+  public User(String username, String password) {
     this.username = username;
     this.password = password;
     this.expenses = new ArrayList<>();
@@ -22,13 +22,26 @@ public class User {
 
   public List<Expense> getExpenses() { return expenses; }
 
-  public void addExpense(double amount, Date date, String description) {
-    Expense expense = new Expense(amount, date, description);
-    expenses.add(expense);
-  }
+  public void addExpense(Expense expense) { expenses.add(expense); }
 
   public String toString() {
     return "Username: " + username + ", Password: " + password;
+  }
+
+  public void changePassword(String newPassword) {
+    String filePath = "UserInfo.csv"; // Change this to your actual file path
+    UpdateUserInfo.updatePassword(username, password, newPassword, filePath);
+    this.password = newPassword;
+    System.out.println("Password changed successfully for " + username);
+  }
+
+  public void changeUsername(String newUsername) {
+    String filePath = "UserInfo.csv"; // Change this to your actual file path
+    UpdateUserInfo.updateUsername(username, password, newUsername, filePath);
+    String oldUsername = this.username;
+    this.username = newUsername;
+    System.out.println("Username changed successfully from " + oldUsername +
+                       " to " + newUsername);
   }
 
   @Override
@@ -43,6 +56,4 @@ public class User {
     return Objects.equals(username, user.username) &&
         Objects.equals(password, user.password);
   }
-
-  public void inputExpense(double amount, Date date, String description) {}
 }

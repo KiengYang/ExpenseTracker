@@ -1,4 +1,3 @@
-
 package ExpenseTracker.User;
 
 import java.io.BufferedWriter;
@@ -10,17 +9,16 @@ public class Register {
 
   public static void registerUser(String tmpName, String tmpPassword) {
     Scanner sc = new Scanner(System.in);
-    String filePath = "UserInfo.txt";
+    String filePath = "UserInfo.csv";
 
-    String writingContent = tmpName + "/" + tmpPassword;
-
-    User user1 = new User(tmpName, tmpPassword);
+    // Format the user information as CSV format
+    String writingContent = tmpName + "," + tmpPassword;
 
     try (BufferedWriter bufferedWriter =
              new BufferedWriter(new FileWriter(filePath, true))) {
       bufferedWriter.write(writingContent);
       bufferedWriter.newLine();
-      System.out.println("Register successfully.");
+      System.out.println("Registered successfully.");
     } catch (IOException e) {
       e.printStackTrace();
     } finally {
@@ -29,3 +27,4 @@ public class Register {
   }
 
 }
+
