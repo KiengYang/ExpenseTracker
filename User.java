@@ -1,18 +1,14 @@
-
 package ExpenseTracker.User;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User {
-  private String username;
-  private String password;
+public class User extends Person {
   private List<Expense> expenses;
 
   public User(String username, String password) {
-    this.username = username;
-    this.password = password;
+    super(username, password);
     this.expenses = new ArrayList<>();
   }
 
