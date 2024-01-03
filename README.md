@@ -1,4 +1,4 @@
-#ExpenseTracker
+# ExpenseTracker
 
 
 ExpenseTracker is an Java base system that can track our daily spending. 
