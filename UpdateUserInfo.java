@@ -1,4 +1,4 @@
-package ExpenseTracker.User;
+package ExpenseApp.User;
 
 import java.io.*;
 import java.util.ArrayList;

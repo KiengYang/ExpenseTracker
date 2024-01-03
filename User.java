@@ -1,55 +1,36 @@
-package ExpenseTracker.User;
+package ExpenseApp.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class User extends Person {
+
   private List<Expense> expenses;
 
-  public User(String username, String password) {
-    super(username, password);
+  public User(String userName, String passWord) {
+    super(userName, passWord);
     this.expenses = new ArrayList<>();
   }
 
-  public String getUsername() { return username; }
-
-  public String getPassword() { return password; }
-
-  public List<Expense> getExpenses() { return expenses; }
-
-  public void addExpense(Expense expense) { expenses.add(expense); }
-
-  public String toString() {
-    return "Username: " + username + ", Password: " + password;
-  }
+  public String getuserName() { return userName; }
+  public String getpassWord() { return passWord; }
 
   public void changePassword(String newPassword) {
-    String filePath = "UserInfo.csv"; // Change this to your actual file path
-    UpdateUserInfo.updatePassword(username, password, newPassword, filePath);
-    this.password = newPassword;
-    System.out.println("Password changed successfully for " + username);
+    String filePath = "UserInfo.csv";
+    UpdateUserInfo.updatePassword(this.userName, this.passWord, newPassword,
+                                  filePath);
+    this.passWord = newPassword;
+    System.out.println("Password changed successfully for " + this.userName);
   }
 
   public void changeUsername(String newUsername) {
-    String filePath = "UserInfo.csv"; // Change this to your actual file path
-    UpdateUserInfo.updateUsername(username, password, newUsername, filePath);
-    String oldUsername = this.username;
-    this.username = newUsername;
+    String filePath = "UserInfo.csv";
+    UpdateUserInfo.updateUsername(this.userName, this.passWord, newUsername,
+                                  filePath);
+    String oldUsername = this.userName;
+    this.userName = newUsername;
     System.out.println("Username changed successfully from " + oldUsername +
                        " to " + newUsername);
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null || getClass() != obj.getClass()) {
-      return false;
-    }
-    User user = (User)obj;
-    return Objects.equals(username, user.username) &&
-        Objects.equals(password, user.password);
-  }
+  public void addExpense(Expense expense) { expenses.add(expense); }
 }
