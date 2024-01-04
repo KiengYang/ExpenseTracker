@@ -64,7 +64,7 @@ public class Login {
 
       try {
         choice = sc.nextInt();
-        sc.nextLine(); // Consume newline character
+        sc.nextLine(); 
         switch (choice) {
         case 1:
           Expense.viewExpense(user);
@@ -106,7 +106,7 @@ public class Login {
           break;
         }
       } catch (Exception e) {
-        sc.nextLine(); // Clear the invalid input
+        sc.nextLine(); 
       }
     } while (choice != 7);
 

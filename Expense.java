@@ -33,7 +33,7 @@ public class Expense {
   public static void addExpense(User user, Scanner sc) {
     System.out.println("Enter amount:");
     double price = sc.nextDouble();
-    sc.nextLine(); // Consume newline character
+    sc.nextLine(); 
 
     System.out.println("Enter description:");
     String info = sc.nextLine();
@@ -43,7 +43,7 @@ public class Expense {
 
     Expense expense = new Expense(date, price, info);
     user.addExpense(expense);
-    writeExpense(user, expense); // Write expense to the user's expense file
+    writeExpense(user, expense); 
   }
 
   public static void writeExpense(User user, Expense expense) {

@@ -16,7 +16,7 @@ public class UpdateUserInfo {
       while ((line = reader.readLine()) != null) {
         String[] userInfo = line.split(",");
         if (userInfo.length >= 2 && userInfo[0].equals(username)) {
-          userInfo[1] = newPassword; // Updating the password field
+          userInfo[1] = newPassword; 
           line = String.join(",", userInfo);
         }
         fileContent.add(line);
@@ -46,7 +46,7 @@ public class UpdateUserInfo {
         String[] userInfo = line.split(",");
         if (userInfo.length >= 2 && userInfo[0].equals(oldUsername) &&
             userInfo[1].equals(oldPassword)) {
-          userInfo[0] = newUsername; // Updating the username field
+          userInfo[0] = newUsername; 
           line = String.join(",", userInfo);
         }
         fileContent.add(line);
