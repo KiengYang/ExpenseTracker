@@ -2,7 +2,7 @@
 #ExpenseTracker
 
 
-ExpenseTracker is an Java base system that can track our daily spending. 
+ExpenseTracker is an Java base system that can track our daily spending. The system will store our data in our system and when the user want to view the spending, it will show the list of our spending and calculate our spending by month and by year.
 
 
 ## Features
